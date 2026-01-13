@@ -13,7 +13,6 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import BackButton from "../components/BackButton";
-import FeatureCards from "../components/FeatureCards";
 import { Trash2, Clipboard, ChevronLeft, ChevronRight } from "lucide-react";
 
 const API_BASE = "http://127.0.0.1:5000";
@@ -139,7 +138,6 @@ export default function OwnerDashboard() {
   if (!info) return null;
 
   const isExpired = info.status === "expired";
-  const accessUrl = `${API_BASE}/access/${info.access_code}`;
   const downloadUrl = `${API_BASE}/download/${info.access_code}`;
   const files: Array<any> = Array.isArray(info.files) ? info.files : [];
   const fileCount = files.length;

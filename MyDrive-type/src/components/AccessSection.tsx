@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link2, KeyRound, Image as ImgIcon, Film, Music, FileText, Folder, ChevronLeft, ChevronRight } from "lucide-react";
+import { Link2, KeyRound, ChevronLeft, ChevronRight } from "lucide-react";
 
 type AccessMode = "url" | "code";
 
@@ -10,7 +10,7 @@ const AccessSection = () => {
   const [inputValue, setInputValue] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [meta, setMeta] = useState<{ name?: string; size?: number; type?: string; code?: string } | null>(null);
+  // Removed obsolete single-file meta state in favor of session model
   const [session, setSession] = useState<any | null>(null);
   const [previewIndex, setPreviewIndex] = useState(0);
   const [selected, setSelected] = useState<Record<string, boolean>>({});
@@ -27,7 +27,7 @@ const AccessSection = () => {
 
   const handleAccess = async () => {
     setError("");
-    setMeta(null);
+    // reset prior state
     setSession(null);
     setSelected({});
     setPreviewIndex(0);

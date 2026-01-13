@@ -167,7 +167,7 @@ const UploadSection = () => {
       }
 
       // prepare statuses
-      setItems((prev) => (list.length === prev.length ? prev.map((p, i) => ({ ...p, status: "waiting", error: undefined })) : list));
+      setItems((prev) => (list.length === prev.length ? prev.map((p) => ({ ...p, status: "waiting", error: undefined })) : list));
 
       // Single request for the whole session
       // Mark all items as uploading
@@ -489,7 +489,7 @@ const UploadSection = () => {
           )}
 
           {/* Single-file result modal (preserved) */}
-          <AlertDialog open={!!accessInfo} onOpenChange={(o) => { if (!o) setAccessInfo(null); }}>
+          <AlertDialog open={!!accessInfo} onOpenChange={(o: boolean) => { if (!o) setAccessInfo(null); }}>
             <AlertDialogContent className="glass max-h-[80vh] overflow-y-auto no-scrollbar rounded-2xl">
               <button
                 onClick={() => setAccessInfo(null)}
@@ -600,7 +600,7 @@ const UploadSection = () => {
           </AlertDialog>
 
           {/* Session result modal (single access code with list of files) */}
-          <AlertDialog open={batchOpen} onOpenChange={(o) => { if (!o) { setBatchOpen(false); setSessionInfo(null); } }}>
+          <AlertDialog open={batchOpen} onOpenChange={(o: boolean) => { if (!o) { setBatchOpen(false); setSessionInfo(null); } }}>
             <AlertDialogContent className="glass max-h-[80vh] overflow-y-auto no-scrollbar rounded-2xl">
               <button
                 onClick={() => { setBatchOpen(false); setSessionInfo(null); }}
